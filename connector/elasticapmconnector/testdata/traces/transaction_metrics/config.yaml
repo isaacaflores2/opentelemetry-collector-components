@@ -1,1 +1,11 @@
-elasticapm: {}
+elasticapm:
+  aggregation:
+    limits:
+      resource:
+        max_cardinality: 2 # does not overflow: input only has 1 resource
+      scope:
+        max_cardinality: 2 # does not overflow: input only has 1 scope
+      metric:
+        max_cardinality: 4 # does not overflow: connector only creates 4 unique metrics per scope (the intervals (1m,10m,60m) do not affect cardinality)
+      datapoint:
+        max_cardinality: 5 # overflows: input has 6 unique datapoints
