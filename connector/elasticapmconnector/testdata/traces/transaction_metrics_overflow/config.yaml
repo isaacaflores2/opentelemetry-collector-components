@@ -1,0 +1,11 @@
+elasticapm:
+  aggregation:
+    limits:
+      resource:
+        max_cardinality: 2
+      scope:
+        max_cardinality: 2
+      metric:
+        max_cardinality: 4
+      datapoint:
+        max_cardinality: 2 # transaction metrics will overflow since there are 3 unique values for `transaction.name`

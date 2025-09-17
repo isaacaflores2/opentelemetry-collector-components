@@ -43,6 +43,7 @@ func (m *Merger) MergeNewer(value []byte) error {
 		m.current.scopeLimitCfg,
 		m.current.metricLimitCfg,
 		m.current.datapointLimitCfg,
+		m.current.datapointOverflowDecorator,
 		m.current.maxExponentialHistogramBuckets,
 	)
 	if err := op.Unmarshal(value); err != nil {
@@ -57,6 +58,7 @@ func (m *Merger) MergeOlder(value []byte) error {
 		m.current.scopeLimitCfg,
 		m.current.metricLimitCfg,
 		m.current.datapointLimitCfg,
+		m.current.datapointOverflowDecorator,
 		m.current.maxExponentialHistogramBuckets,
 	)
 	if err := op.Unmarshal(value); err != nil {

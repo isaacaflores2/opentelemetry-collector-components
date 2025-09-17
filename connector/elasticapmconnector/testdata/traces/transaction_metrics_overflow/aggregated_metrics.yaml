@@ -1,0 +1,1087 @@
+resourceMetrics:
+  - resource:
+      attributes:
+        - key: agent.name
+          value:
+            stringValue: unknown
+        - key: service.name
+          value:
+            stringValue: my.service.traces.transaction
+    scopeMetrics:
+      - metrics:
+          - description: Success count as a metric for service transaction
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 6
+                  timeUnixNano: "1000000"
+            name: event.success_count
+            unit: us
+          - description: Success count as a metric for service transaction
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 6
+                  timeUnixNano: "1000000"
+            name: event.success_count
+            unit: us
+          - description: Success count as a metric for service transaction
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 6
+                  timeUnixNano: "1000000"
+            name: event.success_count
+            unit: us
+          - name: service_summary
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "6"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_summary.1m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_summary
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                  timeUnixNano: "1000000"
+          - name: service_summary
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "6"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_summary.10m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_summary
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                  timeUnixNano: "1000000"
+          - name: service_summary
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "6"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_summary.60m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_summary
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                  timeUnixNano: "1000000"
+          - description: APM service transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "6"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "6"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM service transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "6"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "6"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM service transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "6"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "6"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM service transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+          - description: APM service transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+          - description: APM service transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: service_transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: service_transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "6"
+                    - "0"
+                  count: "6"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+        scope:
+          name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/signaltometricsconnector
+  - resource:
+      attributes:
+        - key: agent.name
+          value:
+            stringValue: unknown
+        - key: service.name
+          value:
+            stringValue: my.service.traces.transaction
+        - key: service.version
+          value:
+            stringValue: 1.2.3
+    scopeMetrics:
+      - metrics:
+          - description: APM transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: POST /customer
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.1m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/details
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.1m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.1m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 1m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+          - description: APM transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: POST /customer
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.10m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/details
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.10m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.10m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 10m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+          - description: APM transaction aggregated metrics as histogram
+            exponentialHistogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: _doc_count
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: POST /customer
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  count: "2"
+                  max: 0
+                  min: 0
+                  negative: {}
+                  positive: {}
+                  sum: 0
+                  timeUnixNano: "1000000"
+                  zeroCount: "2"
+            name: transaction.duration.histogram
+            unit: us
+          - description: APM transaction aggregated metrics as summary
+            histogram:
+              aggregationTemporality: 1
+              dataPoints:
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/address
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+                - attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: transaction.60m
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: aggregate_metric_double
+                    - key: event.outcome
+                      value:
+                        stringValue: success
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: metricset.name
+                      value:
+                        stringValue: transaction
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: GET /users/details
+                    - key: transaction.result
+                      value:
+                        stringValue: HTTP 2xx
+                    - key: transaction.root
+                      value:
+                        boolValue: true
+                    - key: transaction.type
+                      value:
+                        stringValue: request
+                  bucketCounts:
+                    - "2"
+                    - "0"
+                  count: "2"
+                  explicitBounds:
+                    - 1
+                  sum: 0
+                  timeUnixNano: "1000000"
+            name: transaction.duration.summary
+            unit: us
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.60m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+          - description: Overflow datapoint count due to datapoint limit
+            name: _overflow_datapoints
+            sum:
+              aggregationTemporality: 1
+              dataPoints:
+                - asInt: "1"
+                  attributes:
+                    - key: data_stream.dataset
+                      value:
+                        stringValue: <nil>.60m
+                    - key: metricset.interval
+                      value:
+                        stringValue: 60m
+                    - key: overflow
+                      value:
+                        stringValue: datapoint
+                    - key: processor.event
+                      value:
+                        stringValue: metric
+                    - key: transaction.name
+                      value:
+                        stringValue: _other
+        scope:
+          name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/signaltometricsconnector

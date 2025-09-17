@@ -23,6 +23,7 @@ import (
 	"time"
 
 	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/pdata/pmetric"
 )
 
 var _ component.Config = (*Config)(nil)
@@ -64,6 +65,8 @@ type Config struct {
 	ScopeLimit     LimitConfig `mapstructure:"scope_limit"`
 	MetricLimit    LimitConfig `mapstructure:"metric_limit"`
 	DatapointLimit LimitConfig `mapstructure:"datapoint_limit"`
+
+	DatapointOverflowDecorator DatapointOverflowDecoratorFunc
 
 	// ExponentialHistogramMaxBuckets sets the maximum number of buckets
 	// to use for resulting exponential histograms from merge operations.
@@ -120,6 +123,18 @@ type Attribute struct {
 	Key   string `mapstructure:"key"`
 	Value any    `mapstructure:"value"`
 }
+
+// DatapointOverflowDecoratorFunc optional function that is called when datapoint overflow occurs.
+// It provides the ability to modify the datapoint overflowMetric (e.g., adding attributes)
+// with additional context about the original sourceMetric where the overflow occurred.
+// The sourceMetric is the original metric in which the overflow occurred and the overflowMetric is the
+// "overflow bucket" metric that is created to account for the overflowed datapoints.
+//
+// Example: add a specific attribute to the overflowMetric only for a specific sourceMetric name.
+//
+// When granular or conditional overflow attributes are not needed then the DatapointLimit.LimitConfig.OverflowConfig.Attributes
+// will suffice. This function will be called in addition to any attributes defined there.
+type DatapointOverflowDecoratorFunc func(sourceMetric pmetric.Metric, overflowMetric pmetric.Metric) error
 
 func (cfg *Config) Validate() error {
 	// TODO (lahsivjar): Add validation for interval duration

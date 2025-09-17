@@ -122,6 +122,7 @@ func newProcessor(
 					cfg.ScopeLimit,
 					cfg.MetricLimit,
 					cfg.DatapointLimit,
+					cfg.DatapointOverflowDecorator,
 					cfg.ExponentialHistogramMaxBuckets,
 				)
 				if err := v.Unmarshal(value); err != nil {
@@ -279,6 +280,7 @@ func (p *Processor) ConsumeMetrics(ctx context.Context, md pmetric.Metrics) erro
 		p.cfg.ScopeLimit,
 		p.cfg.MetricLimit,
 		p.cfg.DatapointLimit,
+		p.cfg.DatapointOverflowDecorator,
 		p.cfg.ExponentialHistogramMaxBuckets,
 	)
 
@@ -517,6 +519,7 @@ func (p *Processor) exportForInterval(
 			p.cfg.ScopeLimit,
 			p.cfg.MetricLimit,
 			p.cfg.DatapointLimit,
+			p.cfg.DatapointOverflowDecorator,
 			p.cfg.ExponentialHistogramMaxBuckets,
 		)
 		var key merger.Key

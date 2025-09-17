@@ -25,6 +25,7 @@ import (
 	signaltometricsconfig "github.com/open-telemetry/opentelemetry-collector-contrib/connector/signaltometricsconnector/config"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config/configoptional"
+	"go.opentelemetry.io/collector/pdata/pmetric"
 
 	lsmconfig "github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor/config"
 )
@@ -171,6 +172,18 @@ func (cfg Config) lsmConfig() *lsmconfig.Config {
 					{Key: "overflow", Value: "datapoint"},
 				},
 			},
+		}
+
+		lsmConfig.DatapointOverflowDecorator = func(sourceMetric pmetric.Metric, overflowMetric pmetric.Metric) error {
+			// The transaction.name overflow label is required for APU UI compatibility.
+			// This label should only be added for the below transaction duration metrics which are associated
+			// transaction attributes including transaction.name.
+			if sourceMetric.Name() == "transaction.duration.summary" || sourceMetric.Name() == "transaction.duration.histogram" {
+				for _, dp := range overflowMetric.Sum().DataPoints().All() {
+					dp.Attributes().PutStr("transaction.name", "_other")
+				}
+			}
+			return nil
 		}
 	}
 	return lsmConfig

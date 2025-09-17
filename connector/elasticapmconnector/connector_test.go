@@ -142,6 +142,7 @@ func TestConnector_TracesToMetrics(t *testing.T) {
 		{name: "traces/span_metrics_no_overflow"},
 		// output should show overflow
 		{name: "traces/span_metrics_overflow"},
+		{name: "traces/transaction_metrics_overflow"},
 	}
 
 	for _, tc := range testCases {
@@ -158,7 +159,11 @@ func TestConnector_TracesToMetrics(t *testing.T) {
 
 			t2m := newTracesConnector(t, connectortest.NewNopSettings(metadata.Type), cfg, nextMetrics)
 
-			input, err := golden.ReadTraces(filepath.Join(dir, "input.yaml"))
+			inputFile := "input.yaml"
+			if _, err := os.Stat(filepath.Join(dir, "input.json")); err == nil {
+				inputFile = "input.json"
+			}
+			input, err := golden.ReadTraces(filepath.Join(dir, inputFile))
 			require.NoError(t, err)
 			expectedMetricsFile := filepath.Join(dir, "aggregated_metrics.yaml")
 

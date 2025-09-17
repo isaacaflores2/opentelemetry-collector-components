@@ -66,6 +66,7 @@ type Value struct {
 	scopeLimitCfg                  config.LimitConfig
 	metricLimitCfg                 config.LimitConfig
 	datapointLimitCfg              config.LimitConfig
+	datapointOverflowDecorator     config.DatapointOverflowDecoratorFunc
 	maxExponentialHistogramBuckets int
 
 	source   pmetric.Metrics
@@ -106,6 +107,7 @@ type pdataMetric struct {
 // NewValue creates a new instance of the value with the configured limiters.
 func NewValue(
 	resLimit, scopeLimit, metricLimit, datapointLimit config.LimitConfig,
+	datapointOverflowDecorator config.DatapointOverflowDecoratorFunc,
 	maxExponentialHistogramBuckets int,
 ) *Value {
 	return &Value{
@@ -113,6 +115,7 @@ func NewValue(
 		scopeLimitCfg:                  scopeLimit,
 		metricLimitCfg:                 metricLimit,
 		datapointLimitCfg:              datapointLimit,
+		datapointOverflowDecorator:     datapointOverflowDecorator,
 		maxExponentialHistogramBuckets: maxExponentialHistogramBuckets,
 		source:                         pmetric.NewMetrics(),
 	}
@@ -326,14 +329,21 @@ func (s *Value) Finalize() (pmetric.Metrics, error) {
 		}
 		// Add overflow metric due to datapoint limit breached
 		sm := s.scopeLookup[mID.Scope()]
+		overflowMetric := sm.ScopeMetrics.Metrics().AppendEmpty()
 		if err := fillOverflowMetric(
-			sm.ScopeMetrics.Metrics().AppendEmpty(),
+			overflowMetric,
 			overflowDatapointMetricName,
 			overflowDatapointMetricDesc,
 			m.datapointTracker.EstimateOverflow(),
 			s.datapointLimitCfg.Overflow.Attributes,
 		); err != nil {
 			return pmetric.Metrics{}, fmt.Errorf("failed to finalize merged metric: %w", err)
+		}
+
+		if s.datapointOverflowDecorator != nil {
+			if err := s.datapointOverflowDecorator(m.Metric, overflowMetric); err != nil {
+				return pmetric.Metrics{}, fmt.Errorf("failed to decorate overflow metric: %w", err)
+			}
 		}
 	}
 	return s.source, nil

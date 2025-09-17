@@ -21,10 +21,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor/internal/data"
-	"github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor/internal/identity"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/pmetric"
+
+	"github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor/internal/data"
+	"github.com/elastic/opentelemetry-collector-components/processor/lsmintervalprocessor/internal/identity"
 )
 
 type dataPointSlice[DP dataPoint[DP]] interface {
