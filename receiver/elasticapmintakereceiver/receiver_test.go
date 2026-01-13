@@ -42,7 +42,9 @@ import (
 	"go.opentelemetry.io/collector/config/confighttp"
 	"go.opentelemetry.io/collector/consumer/consumertest"
 	"go.opentelemetry.io/collector/receiver/receivertest"
+	"go.uber.org/zap"
 
+	"github.com/elastic/apm-data/input/elasticapm"
 	"github.com/elastic/opentelemetry-collector-components/internal/testutil"
 	"github.com/elastic/opentelemetry-collector-components/receiver/elasticapmintakereceiver/internal/metadata"
 	"github.com/elastic/opentelemetry-lib/agentcfg"
@@ -365,6 +367,7 @@ func TestInvalidInput(t *testing.T) {
 	}
 
 	set := receivertest.NewNopSettings(metadata.Type)
+	set.Logger = zap.NewExample()
 	nextTrace := new(consumertest.TracesSink)
 	receiver, _ := factory.CreateTraces(context.Background(), set, cfg, nextTrace)
 
@@ -412,6 +415,30 @@ func TestInvalidInput(t *testing.T) {
 			}
 		})
 	}
+
+	t.Run("InvalidInputError Logging", func(t *testing.T) {
+		inputErr := &elasticapm.InvalidInputError{
+			Message:  "error message exposed in Error() method",
+			Document: "document with sensitive info",
+			TooLarge: false,
+		}
+
+		logger := zap.NewExample()
+		logger.Error("input error", zap.Error(inputErr))
+		// {"level":"error","msg":"input error","error":"error message exposed in Error() method"}
+
+		handleStreamFunc := func() error {
+			return inputErr
+		}
+
+		err := handleStreamFunc()
+
+		var invalidInputErr *elasticapm.InvalidInputError
+		if errors.As(err, &invalidInputErr) {
+			logger.Error("structure input error", zap.String("error", invalidInputErr.Error()))
+			// {"level":"error","msg":"structure input error","error":"error message exposed in Error() method"}
+		}
+	})
 }
 
 func TestErrors(t *testing.T) {
@@ -430,6 +457,7 @@ func TestErrors(t *testing.T) {
 	}
 
 	set := receivertest.NewNopSettings(metadata.Type)
+	set.Logger = zap.NewExample()
 	nextLog := new(consumertest.LogsSink)
 	receiver, _ := factory.CreateLogs(context.Background(), set, cfg, nextLog)
 
