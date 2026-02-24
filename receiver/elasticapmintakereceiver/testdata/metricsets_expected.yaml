@@ -301,6 +301,11 @@ resourceMetrics:
           - histogram:
               dataPoints:
                 - attributes:
+                    - key: elasticsearch.mapping.hints
+                      value:
+                        arrayValue:
+                          values:
+                            - stringValue: apm_intake_histogram_bounds
                     - key: event.outcome
                       value:
                         stringValue: unknown
@@ -318,6 +323,7 @@ resourceMetrics:
                   explicitBounds:
                     - 1.1
                     - 2.2
+                    - 3.3
                   sum: 15.399999999999999
                   timeUnixNano: "1496170421368000000"
             name: latency_distribution

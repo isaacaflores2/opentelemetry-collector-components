@@ -57,6 +57,9 @@ const dataFormatElasticAPM = "elasticapm"
 const (
 	agentConfigPath    = "/config/v1/agents"
 	intakeV2EventsPath = "/intake/v2/events"
+
+	mappingHintsAttrKey          = "elasticsearch.mapping.hints"
+	hintAPMIntakeHistogramBounds = "apm_intake_histogram_bounds"
 )
 
 type agentCfgFetcherFactory = func(context.Context, component.Host) (agentcfg.Fetcher, error)
@@ -457,9 +460,33 @@ func populateOTelHistogramDataPoint(sample *modelpb.MetricsetSample, dp *pmetric
 	// otherwise the data point is invalid.
 	explicitBounds := dp.ExplicitBounds()
 
-	// explicit bounds are derived from the sample.Histogram.Values, where each value is the upper bound for a bucket.
-	// Except the last bound value which is implied to be +Inf bucket, so it is not set.
-	explicitBounds.FromRaw(apmHistogramValues[:len(apmHistogramValues)-1])
+	// NOTE: For Elastic APM intake histograms we intentionally preserve all
+	// input bounds, including the final bound. This yields
+	// len(explicit_bounds) == len(bucket_counts), which does not follow the
+	// standard OTel histogram shape where the last bucket is implicit +Inf.
+	// We keep this layout so the Elasticsearch exporter can emit MIS-compatible
+	// histogram values directly and avoid inferring the last bucket value from
+	// sum/counts.
+	// explicit bounds are derived from sample.Histogram.Values.
+	explicitBounds.FromRaw(apmHistogramValues)
+	appendMappingHint(dp.Attributes(), hintAPMIntakeHistogramBounds)
+}
+
+func appendMappingHint(attributes pcommon.Map, hint string) {
+	value, ok := attributes.Get(mappingHintsAttrKey)
+	if !ok || value.Type() != pcommon.ValueTypeSlice {
+		slice := attributes.PutEmptySlice(mappingHintsAttrKey)
+		slice.AppendEmpty().SetStr(hint)
+		return
+	}
+
+	slice := value.Slice()
+	for _, existing := range slice.All() {
+		if existing.Type() == pcommon.ValueTypeStr && existing.Str() == hint {
+			return
+		}
+	}
+	slice.AppendEmpty().SetStr(hint)
 }
 
 func (r *elasticAPMIntakeReceiver) translateBreakdownMetricsToOtel(rm *pmetric.ResourceMetrics, event *modelpb.APMEvent, timestampNanos uint64) {
